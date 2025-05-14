@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import * as Pages from "./pages/index.js"; // Import all pages
+import Pages from "./pages/index.js";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
