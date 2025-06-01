@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const InsulinCalc = () => {
-  return (
-    <div>InsulinCalc</div>
-  )
-}
+  return <div>InsulinCalc</div>;
+};
 
-export default InsulinCalc
+export default InsulinCalc;
