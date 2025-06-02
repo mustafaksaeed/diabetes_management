@@ -22,11 +22,13 @@ const DoseHistory = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {doses
+              {doses.reverse()
                 ? doses.map((dose, key) => (
                     <TableRow
                       key={key}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                      }}
                     >
                       <TableCell component="th" scope="row">
                         {dose.dose}

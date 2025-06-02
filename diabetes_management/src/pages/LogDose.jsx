@@ -24,7 +24,7 @@ const LogDose = () => {
         <input type="text" onChange={(e) => setLog(e.target.value)} />
         <button
           type="submit"
-          onClick={() => setDoses((prevDoses) => [...prevDoses, newDose])}
+          onClick={() => setDoses((prevDoses) => [newDose, ...prevDoses])}
         >
           log dose
         </button>
