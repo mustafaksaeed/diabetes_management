@@ -30,7 +30,16 @@ const DoseHistory = () => {
                         "&:last-child td, &:last-child th": { border: 0 },
                       }}
                     >
-                      <TableCell component="th" scope="row">
+                      <TableCell
+                        style={{
+                          color:
+                            dose.dose > 4.0 && dose.dose < 10.0
+                              ? "green"
+                              : "red",
+                        }}
+                        component="th"
+                        scope="row"
+                      >
                         {dose.dose}
                       </TableCell>
                       <TableCell align="right">
