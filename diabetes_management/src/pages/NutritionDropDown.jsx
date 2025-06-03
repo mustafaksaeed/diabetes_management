@@ -3,8 +3,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-const NutritionDropDown = () => {
+const NutritionDropDown = ({ nutritionInfo, onDelete }) => {
   return (
     <List
       sx={{
@@ -16,20 +17,17 @@ const NutritionDropDown = () => {
         maxHeight: 300,
         "& ul": { padding: 0 },
       }}
-      subheader={<li />}
     >
-      {[0, 1, 2, 3, 4].map((sectionId) => (
-        <li key={`section-${sectionId}`}>
-          <ul>
-            <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
-            {[0, 1, 2].map((item) => (
-              <ListItem key={`item-${sectionId}-${item}`}>
-                <ListItemText primary={`Item ${item}`} />
-              </ListItem>
-            ))}
-          </ul>
-        </li>
-      ))}
+      <ul>
+        {nutritionInfo.map((info, key) => (
+          <ListItem key={key}>
+            <ListItemText
+              primary={info.description + "    carbs: " + info.carbs + "g"}
+            />
+            <DeleteForeverIcon onClick={() => onDelete(info.id)} />
+          </ListItem>
+        ))}
+      </ul>
     </List>
   );
 };

@@ -26,7 +26,16 @@ export default function FSearchCard({
   const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
 
   function getInfo() {
-    const info = { protein, carbs, sugars, fiber, description, brandOwner };
+    const id = Date.now();
+    const info = {
+      id,
+      protein,
+      carbs,
+      sugars,
+      fiber,
+      description,
+      brandOwner,
+    };
     console.log(info);
     setNutritionInfo((prev) => [...prev, info]);
   }

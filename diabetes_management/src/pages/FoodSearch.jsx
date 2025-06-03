@@ -3,11 +3,13 @@ import TextField from "@mui/material/TextField"; // Still imported but not used.
 import FsearchCard from "./FsearchCard";
 import ShoppingCounter from "./ShoppingCounter";
 import NutritionContext from "../Context/NutritionContext";
+import NutritionDropDown from "./NutritionDropDown";
 const FoodSearch = () => {
   const [input, setInput] = useState("");
 
   const [filteredFoods, setFilteredFoods] = useState([]);
-  const { nutritionInfo } = useContext(NutritionContext);
+  const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
+
   async function call(e) {
     e.preventDefault();
     const response = await fetch(
@@ -30,20 +32,19 @@ const FoodSearch = () => {
         };
       });
 
-    // [protein, , carbs, , sugars, fiber]
-
-    // const indexes = [0, 2, 4, 5]
-
-    // Update the state with the filtered data
     setFilteredFoods(filterData);
     console.log("filter", filterData);
     console.log("data", data);
   }
-  function IconClick() {}
 
-  //sort data so if its equal make it on top and less likely on bottom
-  //(evenutally) => cache data
+  const deleteItems = (deleted) => {
+    const items = nutritionInfo.filter(
+      (item) =>
+        item.carbs && item.description !== deleted.carbs && deleted.description
+    );
 
+    setNutritionInfo(items);
+  };
   return (
     <div>
       <form onSubmit={(e) => call(e)}>
@@ -62,13 +63,15 @@ const FoodSearch = () => {
               setInput(e.target.value);
             }}
           />
-
           <ShoppingCounter
             style={{ marginRight: "4rem" }}
-            clickIcon={() => console.log("clicked")}
             counter={nutritionInfo.length === 0 ? 0 : nutritionInfo.length}
           />
         </div>
+        <NutritionDropDown
+          nutritionInfo={nutritionInfo}
+          onDelete={(deleted) => deleteItems(deleted)}
+        />
       </form>
 
       {filteredFoods.map((foodItem, index) => (
