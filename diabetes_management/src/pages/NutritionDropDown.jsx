@@ -5,12 +5,16 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-const NutritionDropDown = ({ nutritionInfo, onDelete }) => {
+const NutritionDropDown = ({ nutritionInfo, onDelete, isVisible, onSave }) => {
   return (
     <List
+      style={{
+        display: isVisible ? "block" : "none",
+        position: "absolute",
+      }}
       sx={{
         width: "100%",
-        maxWidth: 360,
+        maxWidth: 220,
         bgcolor: "background.paper",
         position: "relative",
         overflow: "auto",
@@ -27,7 +31,18 @@ const NutritionDropDown = ({ nutritionInfo, onDelete }) => {
             <DeleteForeverIcon onClick={() => onDelete(info.id)} />
           </ListItem>
         ))}
+        <button
+          style={{ display: "flex", justifyContent: "center" }}
+          onClick={() => onSave}
+        >
+          Save meal
+        </button>
       </ul>
+      {/* <button
+        style={{ display: nutritionInfo.length === 0 ? "block" : "none" }}
+      >
+        save meal
+      </button> */}
     </List>
   );
 };

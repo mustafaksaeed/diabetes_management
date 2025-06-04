@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import TextField from "@mui/material/TextField"; // Still imported but not used. You can remove if not needed.
 import FsearchCard from "./FsearchCard";
 import ShoppingCounter from "./ShoppingCounter";
@@ -6,9 +6,16 @@ import NutritionContext from "../Context/NutritionContext";
 import NutritionDropDown from "./NutritionDropDown";
 const FoodSearch = () => {
   const [input, setInput] = useState("");
+  const [listVisible, setListVisible] = useState(false);
 
+  console.log("list visible", listVisible);
   const [filteredFoods, setFilteredFoods] = useState([]);
   const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
+
+  useEffect(() => {
+    console.log("Visibility changed:", listVisible);
+    // You could do things like fetching or side effects here.
+  }, [listVisible]);
 
   async function call(e) {
     e.preventDefault();
@@ -37,16 +44,13 @@ const FoodSearch = () => {
     console.log("data", data);
   }
 
-  const deleteItems = (deleted) => {
-    const items = nutritionInfo.filter(
-      (item) =>
-        item.carbs && item.description !== deleted.carbs && deleted.description
-    );
+  const deleteItems = (id) => {
+    const items = nutritionInfo.filter((item) => item.id !== id);
 
     setNutritionInfo(items);
   };
   return (
-    <div>
+    <div style={{ marginBotton: "4rem" }}>
       <form onSubmit={(e) => call(e)}>
         <div
           style={{
@@ -56,35 +60,49 @@ const FoodSearch = () => {
             width: "80%",
           }}
         >
-          <input
-            style={{ marginLeft: "4rem" }}
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-            }}
-          />
-          <ShoppingCounter
-            style={{ marginRight: "4rem" }}
-            counter={nutritionInfo.length === 0 ? 0 : nutritionInfo.length}
-          />
-        </div>
-        <NutritionDropDown
-          nutritionInfo={nutritionInfo}
-          onDelete={(deleted) => deleteItems(deleted)}
-        />
-      </form>
+          <div>
+            <input
+              style={{ marginLeft: "4rem" }}
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <ShoppingCounter
+              counter={nutritionInfo.length === 0 ? 0 : nutritionInfo.length}
+              clickIcon={() =>
+                setListVisible((prev) => {
+                  if (nutritionInfo.length > 0) {
+                    return !prev;
+                  }
+                  return prev;
+                })
+              }
+            />
 
-      {filteredFoods.map((foodItem, index) => (
-        <FsearchCard
-          key={index}
-          brandOwner={foodItem.brandOwner}
-          description={foodItem.description}
-          protein={foodItem.protein}
-          carbs={foodItem.carbs}
-          sugars={foodItem.sugars}
-          fiber={foodItem.fiber}
-        />
-      ))}
+            <NutritionDropDown
+              isVisible={listVisible}
+              nutritionInfo={nutritionInfo}
+              onDelete={deleteItems}
+            />
+          </div>
+        </div>
+      </form>
+      <div style={{ marginTop: "3rem" }}>
+        {filteredFoods.map((foodItem, index) => (
+          <FsearchCard
+            key={index}
+            brandOwner={foodItem.brandOwner}
+            description={foodItem.description}
+            protein={foodItem.protein}
+            carbs={foodItem.carbs}
+            sugars={foodItem.sugars}
+            fiber={foodItem.fiber}
+          />
+        ))}
+      </div>
     </div>
   );
 };
