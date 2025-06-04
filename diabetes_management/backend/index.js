@@ -27,7 +27,7 @@ app.get("/foodsearch", function (req, res) {
   const url = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${api}&query=${query}`;
 
   async function search(retries = 3) {
-    if (retries === 0) res.status(500).send("TRY AGAIN LATER....");
+    if (retries === 0) res.status(100).send("TRY AGAIN LATER....");
 
     const response = await fetch(url);
 

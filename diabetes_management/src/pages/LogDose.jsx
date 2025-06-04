@@ -33,6 +33,7 @@ const LogDose = () => {
           {doses.length > 0 ? doses[doses.length - 1].dose : "empty"}
         </p>
       </form>
+      <div></div>
     </div>
   );
 };

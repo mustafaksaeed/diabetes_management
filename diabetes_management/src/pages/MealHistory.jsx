@@ -7,8 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-const MealHistory = ({meals}) => {
-
+const MealHistory = ({ meals }) => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -34,23 +33,17 @@ const MealHistory = ({meals}) => {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>Meal</StyledTableCell>
+            <StyledTableCell align="center">Total Carbs</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+          {meals.map((info, key) => (
+            <StyledTableRow key={key}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {info.description}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="center">{info.carbs}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
@@ -61,7 +54,5 @@ const MealHistory = ({meals}) => {
 
 export default MealHistory;
 
-
-
-//basically when meal is saved it shows up in meals list 
+//basically when meal is saved it shows up in meals list
 //

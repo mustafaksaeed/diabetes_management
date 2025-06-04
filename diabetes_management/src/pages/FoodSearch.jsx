@@ -9,7 +9,6 @@ const FoodSearch = () => {
   const [input, setInput] = useState("");
   const [listVisible, setListVisible] = useState(false);
 
-  console.log("list visible", listVisible);
   const [filteredFoods, setFilteredFoods] = useState([]);
   const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
 
@@ -50,6 +49,10 @@ const FoodSearch = () => {
 
     setNutritionInfo(items);
   };
+
+  function saveMeal(){
+    
+  }
   return (
     <div style={{ marginBotton: "4rem" }}>
       <form onSubmit={(e) => call(e)}>
@@ -123,7 +126,7 @@ const FoodSearch = () => {
         >
           Meal History
         </h2>
-        <MealHistory />;
+        <MealHistory meals={nutritionInfo} />
       </div>
     </div>
   );

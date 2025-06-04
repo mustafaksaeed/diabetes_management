@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -40,7 +40,10 @@ const NutritionDropDown = ({ nutritionInfo, onDelete, isVisible, onSave }) => {
         >
           Save meal
         </button>
-        <button> save meal & log dose</button>
+        <button onClick={() => onSave(nutritionInfo)}>
+          {" "}
+          save meal & log dose
+        </button>
       </ul>
       {/* <button
         style={{ display: nutritionInfo.length === 0 ? "block" : "none" }}

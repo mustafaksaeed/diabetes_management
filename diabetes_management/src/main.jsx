@@ -7,7 +7,7 @@ import Pages from "./pages/index.js";
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import DoseProvider from "./Context/DoseProvider";
 import NutritionProvider from "./Context/NutritionProvider";
-import MealsProvider from "./Context/Mealsrovider";
+import MealsProvider from "./Context/MealsProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
