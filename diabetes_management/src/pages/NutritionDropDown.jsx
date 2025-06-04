@@ -32,11 +32,15 @@ const NutritionDropDown = ({ nutritionInfo, onDelete, isVisible, onSave }) => {
           </ListItem>
         ))}
         <button
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{
+            justifyContent: "center",
+            display: nutritionInfo.length === 0 ? "none" : "block",
+          }}
           onClick={() => onSave}
         >
           Save meal
         </button>
+        <button> save meal & log dose</button>
       </ul>
       {/* <button
         style={{ display: nutritionInfo.length === 0 ? "block" : "none" }}

@@ -4,6 +4,7 @@ import FsearchCard from "./FsearchCard";
 import ShoppingCounter from "./ShoppingCounter";
 import NutritionContext from "../Context/NutritionContext";
 import NutritionDropDown from "./NutritionDropDown";
+import MealHistory from "./MealHistory";
 const FoodSearch = () => {
   const [input, setInput] = useState("");
   const [listVisible, setListVisible] = useState(false);
@@ -56,8 +57,8 @@ const FoodSearch = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between",
-            width: "80%",
+            justifyContent: "center",
+            gap: "15rem",
           }}
         >
           <div>
@@ -90,7 +91,16 @@ const FoodSearch = () => {
           </div>
         </div>
       </form>
-      <div style={{ marginTop: "3rem" }}>
+      <div
+        style={{
+          position: "static",
+          marginTop: "4rem",
+          width: "80%",
+          height: "400px",
+          overflow: "auto",
+          margin: "0 auto",
+        }}
+      >
         {filteredFoods.map((foodItem, index) => (
           <FsearchCard
             key={index}
@@ -102,6 +112,18 @@ const FoodSearch = () => {
             fiber={foodItem.fiber}
           />
         ))}
+      </div>
+      <div>
+        <h2
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "1rem",
+          }}
+        >
+          Meal History
+        </h2>
+        <MealHistory />;
       </div>
     </div>
   );
