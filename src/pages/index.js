@@ -3,7 +3,7 @@ import InsulinCalc from "./InsulinCalc";
 import LogDose from "./LogDose";
 import Report from "./Report";
 import Settings from "./Settings";
-import FoodSearch from "./foodSearch";
+import FoodSearch from "./FoodSearch";
 
 export default {
   DoseHistory,

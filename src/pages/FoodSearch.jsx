@@ -50,9 +50,7 @@ const FoodSearch = () => {
     setNutritionInfo(items);
   };
 
-  function saveMeal(){
-    
-  }
+  function saveMeal() {}
   return (
     <div style={{ marginBotton: "4rem" }}>
       <form onSubmit={(e) => call(e)}>
