@@ -42,12 +42,14 @@ const MealHistory = ({ meals }) => {
             ? meals.map((info, key) => (
                 <StyledTableRow key={key}>
                   <StyledTableCell component="th" scope="row">
-                    {info.id}
+                    {info.name}
                   </StyledTableCell>
-                  <StyledTableCell align="center">{info.carbs}</StyledTableCell>
+                  <StyledTableCell align="center">
+                    {info.Totalcarbs}
+                  </StyledTableCell>
                 </StyledTableRow>
               ))
-            : ""}
+            : "empty"}
         </TableBody>
       </Table>
     </TableContainer>

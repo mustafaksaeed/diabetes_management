@@ -14,12 +14,11 @@ const FoodSearch = () => {
   const [filteredFoods, setFilteredFoods] = useState([]);
   const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
 
-  // const { mealName, setMealName } = useState("");
+  const [mealName, setMealName] = useState("");
   const { meals, setMeals } = useContext(MealsContext);
 
   useEffect(() => {
     console.log("Visibility changed:", listVisible);
-    // You could do things like fetching or side effects here.
   }, [listVisible]);
 
   async function call(e) {
@@ -55,21 +54,30 @@ const FoodSearch = () => {
     setNutritionInfo(items);
   };
 
-  function saveMeal() {
-    setMeals((prevMeals) => {
-      let newMealValues = nutritionInfo.map((info) => {
-        const carbs = info.carbs;
-        return carbs;
-      });
-
-      if (prevMeals !== newMealValues && prevMeals.length !== 0) {
-        return [...prevMeals, newMealValues];
-      }
-      newMealValues = "";
-    });
+  function handleInput(e) {
+    setMealName(e.target.value);
   }
 
-  console.log("meals", meals);
+  function saveMeal() {
+    let sum = 0;
+    const TotalCarbs = nutritionInfo.reduce((accumulator, info) => {
+      return accumulator + info.carbs;
+    }, 0);
+    console.log("sum carbs, sum", sum);
+
+    const listObj = {
+      name: mealName,
+      id: Date.now(),
+      Totalcarbs: TotalCarbs,
+    };
+
+    setMeals((prevMeals) => {
+      return [...prevMeals, listObj];
+    });
+    setNutritionInfo([]);
+  }
+  console.log("mealList", meals);
+
   return (
     <div style={{ marginBotton: "4rem" }}>
       <form onSubmit={(e) => call(e)}>
@@ -108,6 +116,7 @@ const FoodSearch = () => {
               nutritionInfo={nutritionInfo}
               onDelete={deleteItems}
               onSave={saveMeal}
+              inputVal={(e) => handleInput(e)}
               // mealName={(e) => setMealName(e.target.value)}
             />
           </div>
