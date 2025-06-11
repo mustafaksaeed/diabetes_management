@@ -5,7 +5,13 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-const NutritionDropDown = ({ nutritionInfo, onDelete, isVisible, onSave }) => {
+const NutritionDropDown = ({
+  nutritionInfo,
+  onDelete,
+  isVisible,
+  onSave,
+  // mealName,
+}) => {
   return (
     <List
       style={{
@@ -31,19 +37,17 @@ const NutritionDropDown = ({ nutritionInfo, onDelete, isVisible, onSave }) => {
             <DeleteForeverIcon onClick={() => onDelete(info.id)} />
           </ListItem>
         ))}
+        {/* <input type="text" onChange={mealName} /> */}
         <button
           style={{
             justifyContent: "center",
             display: nutritionInfo.length === 0 ? "none" : "block",
           }}
-          onClick={() => onSave}
+          onClick={() => onSave(nutritionInfo)}
         >
           Save meal
         </button>
-        <button onClick={() => onSave(nutritionInfo)}>
-          {" "}
-          save meal & log dose
-        </button>
+        <button> save meal & log dose</button>
       </ul>
       {/* <button
         style={{ display: nutritionInfo.length === 0 ? "block" : "none" }}

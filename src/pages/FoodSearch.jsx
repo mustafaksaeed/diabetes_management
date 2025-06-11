@@ -5,12 +5,17 @@ import ShoppingCounter from "./ShoppingCounter";
 import NutritionContext from "../Context/NutritionContext";
 import NutritionDropDown from "./NutritionDropDown";
 import MealHistory from "./MealHistory";
+import MealsContext from "../Context/MealsContext";
+
 const FoodSearch = () => {
   const [input, setInput] = useState("");
   const [listVisible, setListVisible] = useState(false);
 
   const [filteredFoods, setFilteredFoods] = useState([]);
   const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
+
+  // const { mealName, setMealName } = useState("");
+  const { meals, setMeals } = useContext(MealsContext);
 
   useEffect(() => {
     console.log("Visibility changed:", listVisible);
@@ -50,9 +55,21 @@ const FoodSearch = () => {
     setNutritionInfo(items);
   };
 
-  function saveMeal(){
-    
+  function saveMeal() {
+    setMeals((prevMeals) => {
+      let newMealValues = nutritionInfo.map((info) => {
+        const carbs = info.carbs;
+        return carbs;
+      });
+
+      if (prevMeals !== newMealValues && prevMeals.length !== 0) {
+        return [...prevMeals, newMealValues];
+      }
+      newMealValues = "";
+    });
   }
+
+  console.log("meals", meals);
   return (
     <div style={{ marginBotton: "4rem" }}>
       <form onSubmit={(e) => call(e)}>
@@ -90,6 +107,8 @@ const FoodSearch = () => {
               isVisible={listVisible}
               nutritionInfo={nutritionInfo}
               onDelete={deleteItems}
+              onSave={saveMeal}
+              // mealName={(e) => setMealName(e.target.value)}
             />
           </div>
         </div>
@@ -126,10 +145,12 @@ const FoodSearch = () => {
         >
           Meal History
         </h2>
-        <MealHistory meals={nutritionInfo} />
+        <MealHistory meals={meals} />
       </div>
     </div>
   );
 };
 
 export default FoodSearch;
+
+//use material ui and take out bootstrap
