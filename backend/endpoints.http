@@ -9,5 +9,9 @@ GET http://localhost:8000/health
 
 //create account using sign in 
 
+###
+GET http://localhost:8000/login
 
+###
+GET http://localhost:8000/signup
 

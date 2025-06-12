@@ -42,6 +42,14 @@ app.get("/foodsearch", function (req, res) {
   search();
 });
 
-app.listen(port, (req, res) => {
+app.listen(port, function () {
   console.log("server listening on port:", port);
+});
+
+app.get("/login", function () {
+  console.log("user logged in");
+});
+
+app.get("/signup", function () {
+  console.log("user signed up");
 });
