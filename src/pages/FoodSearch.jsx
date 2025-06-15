@@ -163,3 +163,10 @@ const FoodSearch = () => {
 export default FoodSearch;
 
 //use material ui and take out bootstrap
+/*
+- add light mode/dark mode
+- 
+
+
+
+*/

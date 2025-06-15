@@ -21,7 +21,7 @@ createRoot(document.getElementById("root")).render(
                 <Route path="/" element={<App />} />
                 <Route path="dosehistory" element={<Pages.DoseHistory />} />
                 <Route path="InsulinCalc" element={<Pages.InsulinCalc />} />
-                <Route path="foodSearch" element={<Pages.FoodSearch />} />
+                <Route path="meals" element={<Pages.FoodSearch />} />
                 <Route path="logdose" element={<Pages.LogDose />} />
                 <Route path="Report" element={<Pages.Report />} />
                 <Route path="Settings" element={<Pages.Settings />} />
@@ -42,5 +42,3 @@ createRoot(document.getElementById("root")).render(
 
 
 */
-
-

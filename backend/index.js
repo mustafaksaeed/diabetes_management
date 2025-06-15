@@ -8,6 +8,7 @@ const api = process.env.APIKEY;
 const port = process.env.PORT;
 
 const app = express();
+app.use(cors());
 
 app.get("/health", (req, res) => {
   res.send("OK works");
@@ -53,3 +54,5 @@ app.get("/login", function () {
 app.get("/signup", function () {
   console.log("user signed up");
 });
+
+
