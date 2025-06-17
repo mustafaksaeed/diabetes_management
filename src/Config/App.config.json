@@ -1,0 +1,9 @@
+{
+  "LANGUAGES": ["en", "es", "fr"],
+  "CURRENT_LANGUAGE": "en",
+  "THEMES": ["dark", "light"],
+  "CURRENT_THEME": "light",
+  "URLS": {},
+  "MEASUREMENTS": ["METRIC", "IMPERIAL"],
+  "CURRENT_MEASUREMENT": "METRIC"
+}

@@ -4,10 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Pages from "./pages/index.js";
-import Navbar from "./Components/Navbar/Navbar.jsx";
-import DoseProvider from "./Context/DoseProvider";
-import NutritionProvider from "./Context/NutritionProvider";
-import MealsProvider from "./Context/MealsProvider";
+// import Navbar from "./Components/Navbar/Navbar.jsx";
+import { Navbar } from "./Components/Global";
+import DoseProvider from "./Contexts/DoseProvider";
+import NutritionProvider from "./Contexts/NutritionProvider";
+import MealsProvider from "./Contexts/MealsProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
