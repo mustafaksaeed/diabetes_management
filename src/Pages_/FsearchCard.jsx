@@ -21,7 +21,7 @@ export default function FSearchCard({
   description,
   brandOwner,
 }) {
-  // console.log("foodInfo =", foodInfo);
+  // console.log("foodInfo =", );
 
   const { nutritionInfo, setNutritionInfo } = useContext(NutritionContext);
 

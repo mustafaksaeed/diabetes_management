@@ -31,6 +31,21 @@ const FoodSearch = () => {
     const filterData = data.foods
       .filter((v) => v.description.toLowerCase() === input.toLowerCase())
       .map((food) => {
+        if (food.foodNutrients.length < 6) {
+          console.warn(
+            "Insufficient nutrient data for food:",
+            food.description
+          );
+          return {
+            brandOwner: food.brandOwner,
+            description: food.description,
+            protein: 0,
+            carbs: 0,
+            sugars: 0,
+            fiber: 0,
+          };
+        }
+
         return {
           // ...food,
           // info: foodInfo.foodNutrients[2].value,
