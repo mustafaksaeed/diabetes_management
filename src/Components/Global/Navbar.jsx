@@ -14,7 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-const pages = ["logdose", "meals", "report"];
+const pages = ["log-dose", "meals", "report"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
@@ -168,6 +168,8 @@ const Navbar = () => {
 
 export default Navbar;
 
-<Link className="nav-link" to="/foodsearch">
+{
+  /* <Link className="nav-link" to="/foodsearch">
   foodsearch
-</Link>;
+</Link>; */
+}

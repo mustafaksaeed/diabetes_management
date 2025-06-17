@@ -2,10 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import TextField from "@mui/material/TextField"; // Still imported but not used. You can remove if not needed.
 import FsearchCard from "./FsearchCard";
 import ShoppingCounter from "./ShoppingCounter";
-import NutritionContext from "../Context/NutritionContext";
+import NutritionContext from "../Contexts/NutritionContext";
 import NutritionDropDown from "./NutritionDropDown";
 import MealHistory from "./MealHistory";
-import MealsContext from "../Context/MealsContext";
+import MealsContext from "../Contexts/MealsContext";
 
 const FoodSearch = () => {
   const [input, setInput] = useState("");

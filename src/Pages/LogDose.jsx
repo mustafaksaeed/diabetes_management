@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import DoseHistory from "./DoseHistory";
-import DoseContext from "../Context/DoseContext";
+import DoseContext from "../Contexts/DoseContext";
 
 const LogDose = () => {
   const [log, setLog] = useState("");
