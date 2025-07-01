@@ -9,7 +9,6 @@ import {
   FoodSearch,
   LogDose,
   Report,
-  Settings,
   LandingPage,
   LoginPage,
   SignupPage,
@@ -63,7 +62,7 @@ const Router = () => {
           <Route path="/meals" element={<FoodSearch />} />
           <Route path="/log-dose" element={<LogDose />} />
           <Route path="/report" element={<Report />} />
-          <Route path="/settings" element={<Settings />} />
+          {/* <Route path="/settings" element={<Settings />} /> */}
           {/* auth routes */}
           {!isLoggedIn && (
             <>
