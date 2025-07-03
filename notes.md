@@ -1,0 +1,6 @@
+- change to shadcn
+- change to typescript 
+- install typescript and create config files 
+- draw out app
+- fix dashboard shit 
+- watch chris typescript vid
