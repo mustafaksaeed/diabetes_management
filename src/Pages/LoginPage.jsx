@@ -38,7 +38,7 @@ const LoginPage = () => {
   return (
     <Container maxWidth="sm">
       <Typography variant="h4" align="center" gutterBottom>
-        Sign Up
+        Login
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
