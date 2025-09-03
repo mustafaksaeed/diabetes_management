@@ -54,6 +54,3 @@ app.get("/login", function () {
 app.get("/signup", function () {
   console.log("user signed up");
 });
-
-
-

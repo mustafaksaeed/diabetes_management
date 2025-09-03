@@ -8,11 +8,7 @@ import MealsProvider from "./Contexts/MealsProvider";
 const App = () => {
   return (
     <MealsProvider>
-      <NutritionProvider>
-        <DoseProvider>
-          <Router />
-        </DoseProvider>
-      </NutritionProvider>
+      <Router />
     </MealsProvider>
   );
 };
